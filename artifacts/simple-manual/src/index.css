@@ -666,6 +666,32 @@ mark.highlight {
   letter-spacing: 0.3px;
 }
 
+.doc-figure {
+  margin: 20px 0;
+  text-align: center;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8faff;
+}
+
+.doc-figure-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.doc-figure-caption {
+  display: block;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--csm-muted);
+  padding: 8px 12px;
+  border-top: 1px solid #dbeafe;
+  background: #f0f6ff;
+}
+
 .note-box {
   background: #fffbeb;
   border-left: 4px solid var(--csm-warning);

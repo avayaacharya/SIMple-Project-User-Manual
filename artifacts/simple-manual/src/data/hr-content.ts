@@ -74,7 +74,10 @@ export const hrModule: Module = {
           <li><span class="step-badge">4</span><span>Selecione a funcionalidade pretendida na árvore de navegação lateral para aceder ao ecrã correspondente.</span></li>
         </ol>
         <div class="note-box"><strong>⚠ Nota:</strong> O acesso às diferentes funcionalidades do módulo está condicionado aos perfis e permissões atribuídos ao seu utilizador pelo administrador do sistema. Caso não consiga visualizar alguma funcionalidade, contacte o seu administrador.</div>
-        <div class="figure-placeholder">Figura 1-1: Ecrã de Login do SIMple Project</div>
+        <figure class="doc-figure">
+          <img src="/fig-1-1-login.jpg" alt="Ecrã de Login do SIMple Project" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 1-1: Ecrã de Login do SIMple Project</figcaption>
+        </figure>
         <div class="figure-placeholder">Figura 1-2: Painel principal com menu lateral de Recursos Humanos</div>
       `
     },
