@@ -100,7 +100,10 @@ export const hrModule: Module = {
       content: `
         <h2>2.1 Registo de Emprego</h2>
         <p>O ecrã de Registo de Emprego permite a gestão completa da lista de funcionários da organização. Neste ecrã, o utilizador pode visualizar todos os colaboradores registados, bem como adicionar novos funcionários ao sistema.</p>
-        <div class="figure-placeholder">Figura 2-1: Ecrã de Lista de Funcionários — Registo de Emprego</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-1-funcionarios.jpg" alt="Ecrã de Lista de Funcionários — Registo de Emprego" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-1: Ecrã de Lista de Funcionários — Registo de Emprego</figcaption>
+        </figure>
         <h3>Lista de Funcionários</h3>
         <p>O ecrã principal apresenta uma tabela com todos os funcionários registados no sistema. Para cada funcionário, estão disponíveis as seguintes ações:</p>
         <ul>
