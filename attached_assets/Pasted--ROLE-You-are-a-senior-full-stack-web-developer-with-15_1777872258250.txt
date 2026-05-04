@@ -1,0 +1,422 @@
+[ROLE]
+You are a senior full-stack web developer with 15+ years of experience building 
+enterprise internal portals and documentation systems for mid-size IT service 
+organizations (1,000–1,500 employees). You specialize in creating interactive, 
+accessible HTML/CSS/JavaScript applications with tree-navigation structures, 
+responsive design, and role-based authentication. You write clean, production-ready 
+vanilla HTML5, CSS3, and JavaScript — no external frameworks required unless 
+specified.
+
+[CONTEXT]
+A mid-size IT services company has two existing User Manuals written in Portuguese 
+for the SIMple Project (an IGRP-based municipal management platform used in 
+Cabo Verde). The manuals cover two modules:
+
+MODULE 1 — HR Module (Módulo de Recursos Humanos)
+  Full document structure with the following sections:
+  1. Visão Geral
+     1.1 Objetivo
+     1.2 Como Começar
+  2. RH
+     2.1 Registo de Emprego
+         → Employee List screen, New Employee popup (3 tabs:
+           Validate Registration, Personal Data, Attachment),
+           List view with action icons
+     2.2 Presença
+         2.2.1 Atribuição de Licenças
+               → Leave Allocation screen, Planning screen, Submit form
+         2.2.2 Plano de Férias
+               → Vacation Plan list, Plan Vacation form with fields:
+                 Current Balance, Carry Forward, Available Balance,
+                 Quarter, From, To, Days, Description, Attach Document
+         2.2.3 Assiduidade Diária
+               → Daily Attendance screen with date picker, entry/exit 
+                 times, attendance hours per employee, Export button.
+                 Note: Future integration with biometric system planned.
+         2.2.4 Gestão de Ausências
+               → Two search modes: Cost Center and Employee.
+                 Cost Center Form: Employee, Current Balance, Carried Balance,
+                 Available Balance, Absence Type, Start Date, End Date,
+                 Entry Method, Document Type, File Upload, Description.
+                 Employee Form: Search by employee, action button to form.
+         2.2.5 Gestão de Horas Extraordinárias
+               → Overtime Management list. Two modes: Cost Center and Employee.
+                 Form fields: Employee, Overtime Type, Date, Total Hours,
+                 Supporting Document. Add More Employees option.
+     2.3 Serviço Online
+         2.3.1 Certificado de Declaração de Emprego
+               → Filter and download Employment Declaration Certificate
+         2.3.2 Certificado de Declaração Salarial
+               → Filter and download Salary Declaration Certificate
+
+MODULE 2 — Contract Management Module (Módulo de Gestão de Contratos)
+  Full document structure with the following sections:
+  1. Visão Geral
+     1.1 Objetivo
+     1.2 Como Começar
+  2. Gestão de Contratos
+     2.1 Planeamento de Aquisições
+         → Acquisition Planning list with filters (Fiscal Year, Type).
+           Add Acquisition popup: Fiscal Year, Cost Center, Object, Type,
+           Quantity, Budget, Start Date, End Date. Submit → View screen.
+     2.2 Registo de Fornecedores
+         → Supplier Registration list. Add popup: Company Name, 
+           Supplier Type, Registered Address, Contact Person Name,
+           Phone Number, Email, Year Founded, Company Type, Annual Billing,
+           Tax ID Number, Certificate of Registration file upload.
+           Bank Details: Bank Name, Branch Name, Account Holder, 
+           Bank Account Number, NIB, SWIFT/BIC Code. Save button.
+     2.3 Registo do Contrato
+         2.3.1 Ver Contrato de Integração
+               → Contract Integration list with filters: Fiscal Year,
+                 Project Name, Contract Form, Supplier Name, Dates,
+                 Contract Status. Add Contract popup: all contract fields
+                 including payment conditions, execution guarantee,
+                 financing details, document uploads (Contract, Annex 1–4,
+                 Specifications, Programme, Decision, Resolution, Guarantee,
+                 Amendment, Nota de Referência).
+         2.3.2 Detalhes da Execução do Contrato
+               → Contract Execution list. Edit → Execution Form showing
+                 payment phases with Percentage, Amount, Status, 
+                 Payment Date, Guarantee, Tax, Total. Invoice and Payment 
+                 upload buttons. Security deposit return. Caution document.
+
+IMPORTANT CONTENT NOTES:
+  • All content is in Portuguese (European) — do NOT translate. 
+    All labels, headings, descriptions, and body text must remain 
+    exactly as written in the source documents above.
+  • All figure references in the content (e.g., "Fig. 2-3", "Figura 2-7") 
+    must be preserved as text since no actual images are being embedded.
+    Replace each figure reference with a styled placeholder:
+    [Figura X-X: Nome da figura] in a light grey italic callout box.
+  • The document metadata header (CSM Technologies, Documento CSM/QT/01/01, 
+    Rev 1.0) must appear as a footer on each content page.
+
+EMPLOYEE AUTHENTICATION:
+  The portal requires employee login before accessing any manual content.
+  Mock credentials for development:
+    EMP001 / senha123  →  Ravi Shankar   (HR access: both modules)
+    EMP002 / senha123  →  Priya Menon    (HR access: HR module only)
+    EMP003 / senha123  →  Arjun Das      (Contract access: Contract module only)
+  Authentication is localStorage-based mock (no backend needed).
+  On incorrect credentials: show inline error "ID ou senha inválidos."
+  On success: redirect to the portal with the tree navigation.
+
+[TASK]
+Build a complete, single-file (or multi-file HTML/CSS/JS) interactive User Manual 
+Portal with the following specifications. All files must be fully generated with 
+no truncation.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCREEN 1 — LOGIN PAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Layout: centered card on a deep blue gradient background.
+
+Elements:
+  • Company logo placeholder: circle with "CSM" initials in white on blue
+  • Heading: "SIMple Project — Manual do Utilizador"
+  • Sub-heading: "Aceda ao portal com o seu ID de funcionário"
+  • Input field: "ID do Funcionário" (placeholder: "Ex: EMP001")
+  • Input field: "Senha" (password type, show/hide toggle button)
+  • "Iniciar Sessão" button (full width, blue, with loading spinner on click)
+  • Error message zone: inline, red text, below password field
+  • Footer text: "© 2025 CSM Technologies — Projeto SIMple"
+
+Behaviour:
+  • On submit: check against mock credentials in JS
+  • On success: hide login screen, show portal screen with fade transition
+  • On failure: show "ID ou senha inválidos. Tente novamente." below password
+  • Pressing Enter in either field submits the form
+  • Button shows spinner for 800ms before resolving (simulate API call)
+  • Store logged-in user in sessionStorage
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCREEN 2 — MAIN PORTAL (post-login)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Layout: full-height three-panel layout
+
+  ┌─────────────────────────────────────────────────────┐
+  │  TOP NAVBAR                                         │
+  ├──────────────┬──────────────────────────────────────┤
+  │  LEFT PANEL  │  MAIN CONTENT PANEL                  │
+  │  Tree Nav    │  (scrollable)                        │
+  │  (scrollable)│                                      │
+  └──────────────┴──────────────────────────────────────┘
+
+TOP NAVBAR:
+  • Left: CSM logo + "SIMple — Manual do Utilizador"
+  • Right: employee name badge + "Terminar Sessão" button
+  • On logout: clear sessionStorage + fade back to login screen
+  • Sticky, blue background, white text
+  • Mobile: hamburger icon toggles left panel visibility
+
+LEFT PANEL — TREE NAVIGATION:
+  Width: 280px on desktop, slide-out drawer on mobile (< 768px)
+  Background: white with subtle left blue border
+  Search box at top: "Pesquisar no manual..." — filters visible tree nodes 
+  in real time as the user types. Non-matching nodes collapse and hide.
+
+  TREE STRUCTURE (render only the modules the logged-in user has access to):
+
+  ── 📘 Módulo de Recursos Humanos          [expandable]
+     ├── 1. Visão Geral
+     │    ├── 1.1 Objetivo
+     │    └── 1.2 Como Começar
+     └── 2. RH
+          ├── 2.1 Registo de Emprego
+          ├── 2.2 Presença
+          │    ├── 2.2.1 Atribuição de Licenças
+          │    ├── 2.2.2 Plano de Férias
+          │    ├── 2.2.3 Assiduidade Diária
+          │    ├── 2.2.4 Gestão de Ausências
+          │    └── 2.2.5 Gestão de Horas Extraordinárias
+          └── 2.3 Serviço Online
+               ├── 2.3.1 Certificado de Declaração de Emprego
+               └── 2.3.2 Certificado de Declaração Salarial
+
+  ── 📄 Módulo de Gestão de Contratos       [expandable]
+     ├── 1. Visão Geral
+     │    ├── 1.1 Objetivo
+     │    └── 1.2 Como Começar
+     └── 2. Gestão de Contratos
+          ├── 2.1 Planeamento de Aquisições
+          ├── 2.2 Registo de Fornecedores
+          └── 2.3 Registo do Contrato
+               ├── 2.3.1 Ver Contrato de Integração
+               └── 2.3.2 Detalhes da Execução do Contrato
+
+  TREE INTERACTION RULES:
+  • Clicking a module root: expands/collapses its children with 
+    smooth 200ms CSS transition (max-height animation)
+  • Clicking a section leaf node: loads its content in the right 
+    panel AND highlights the node with blue left-border accent
+  • Active node stays highlighted on refresh (use sessionStorage)
+  • Expand/collapse arrow (▶/▼) rotates on toggle
+  • Indentation levels: Module = 0px, Section = 16px, 
+    Subsection = 32px, Sub-subsection = 48px
+  • On page load: expand the first accessible module and select 
+    its "Visão Geral" section automatically
+
+MAIN CONTENT PANEL:
+  • Scrollable, white background, comfortable reading width (max 860px)
+  • Breadcrumb trail at top: 
+    "Módulo › Section › Subsection" — updates on every tree click
+  • Content rendered as structured HTML from the JS content object 
+    (not from a separate HTML file)
+  • Each section content includes:
+      - Section number and title as H2 (blue, bold)
+      - Sub-section titles as H3
+      - Body paragraphs with line height 1.7
+      - Bullet point lists styled with blue left-border
+      - Step-by-step instructions with numbered steps and 
+        a blue circle number badge
+      - Figure placeholders styled as:
+          ┌─────────────────────────────────────┐
+          │  📷  Figura 2-3: Pop-up de validação │
+          │      do registo                      │
+          └─────────────────────────────────────┘
+        Light grey background, italic caption, dashed border
+      - Important notes ("Nota:") styled as amber/yellow info box 
+        with ⚠ icon
+      - "Nota:" from section 2.2.3 about biometric integration 
+        must appear as an amber info box
+  • Smooth scroll to top of content panel on every tree navigation click
+  • "Voltar ao Topo" floating button appears after scrolling 200px down
+
+CONTENT DATA STRUCTURE:
+  Store all manual content in a JavaScript object:
+  
+  const manualContent = {
+    hr: {
+      id: 'hr',
+      title: 'Módulo de Recursos Humanos',
+      icon: '📘',
+      sections: {
+        'hr-1':     { title: '1. Visão Geral', content: '...' },
+        'hr-1-1':   { title: '1.1 Objetivo', content: '...' },
+        'hr-1-2':   { title: '1.2 Como Começar', content: '...' },
+        'hr-2':     { title: '2. RH', content: '...' },
+        'hr-2-1':   { title: '2.1 Registo de Emprego', content: '...' },
+        'hr-2-2':   { title: '2.2 Presença', content: '...' },
+        'hr-2-2-1': { title: '2.2.1 Atribuição de Licenças', content: '...' },
+        'hr-2-2-2': { title: '2.2.2 Plano de Férias', content: '...' },
+        'hr-2-2-3': { title: '2.2.3 Assiduidade Diária', content: '...' },
+        'hr-2-2-4': { title: '2.2.4 Gestão de Ausências', content: '...' },
+        'hr-2-2-5': { title: '2.2.5 Gestão de Horas Extraordinárias', content: '...' },
+        'hr-2-3':   { title: '2.3 Serviço Online', content: '...' },
+        'hr-2-3-1': { title: '2.3.1 Certificado de Declaração de Emprego', content: '...' },
+        'hr-2-3-2': { title: '2.3.2 Certificado de Declaração Salarial', content: '...' }
+      }
+    },
+    contracts: {
+      id: 'contracts',
+      title: 'Módulo de Gestão de Contratos',
+      icon: '📄',
+      sections: {
+        'ct-1':     { title: '1. Visão Geral', content: '...' },
+        'ct-1-1':   { title: '1.1 Objetivo', content: '...' },
+        'ct-1-2':   { title: '1.2 Como Começar', content: '...' },
+        'ct-2':     { title: '2. Gestão de Contratos', content: '...' },
+        'ct-2-1':   { title: '2.1 Planeamento de Aquisições', content: '...' },
+        'ct-2-2':   { title: '2.2 Registo de Fornecedores', content: '...' },
+        'ct-2-3':   { title: '2.3 Registo do Contrato', content: '...' },
+        'ct-2-3-1': { title: '2.3.1 Ver Contrato de Integração', content: '...' },
+        'ct-2-3-2': { title: '2.3.2 Detalhes da Execução do Contrato', content: '...' }
+      }
+    }
+  };
+
+  Populate EVERY content field with the FULL text from the source 
+  documents above. Do not use placeholder "..." in the final output.
+  Each content value must be a complete HTML string with all paragraphs,
+  bullet lists, step instructions, and figure placeholders from the 
+  corresponding section.
+
+USER ACCESS CONTROL:
+  const userAccess = {
+    'EMP001': { name: 'Ravi Shankar',  modules: ['hr', 'contracts'] },
+    'EMP002': { name: 'Priya Menon',   modules: ['hr'] },
+    'EMP003': { name: 'Arjun Das',     modules: ['contracts'] }
+  };
+
+  Render only the modules in the tree that match the logged-in user's 
+  modules array. If user has only one module, auto-expand it on login.
+
+SEARCH FUNCTIONALITY:
+  • Search box in left panel filters tree nodes in real time
+  • Matching text highlighted in yellow within visible tree labels
+  • Non-matching parent nodes collapse; matching children keep parents open
+  • Clearing search restores full tree state
+  • If no results: show "Nenhum resultado encontrado." below search box
+
+PRINT / EXPORT:
+  • "Imprimir Secção" button in top-right of content panel
+  • On click: triggers window.print() with @media print CSS that shows 
+    only the content panel and a header with module + section title
+  • Hides navbar, tree panel, and all UI chrome in print view
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILE LIST (generate all, no truncation)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Option A — Single file (preferred for Replit simplicity):
+  index.html  (all CSS in <style>, all JS in <script>, all content inline)
+
+Option B — Multi-file (if single file exceeds manageable length):
+  index.html         — structure and layout
+  styles.css         — all styling
+  app.js             — auth logic, tree rendering, content loading, search
+  content-hr.js      — HR module content object
+  content-contracts.js — Contracts module content object
+
+Generate Option A first. If it exceeds 800 lines, switch to Option B 
+and generate each file completely before moving to the next.
+
+[FORMAT]
+DESIGN SYSTEM:
+  Color palette:
+    Primary Blue      #1A4FBA   (navbar, active tree node, headings, buttons)
+    Medium Blue       #2A7BDE   (hover states, links, breadcrumb text)
+    Light Blue        #EBF3FF   (tree hover background, content section bg)
+    Accent Blue       #0EA5E9   (step number badges, highlight borders)
+    White             #FFFFFF   (all backgrounds — content, tree, login card)
+    Surface           #F5F8FF   (subtle page background, figure placeholder bg)
+    Text Dark         #0F1E3C   (body text)
+    Text Muted        #64748B   (captions, meta text, breadcrumb separators)
+    Success           #10B981   (not used prominently)
+    Warning Amber     #F59E0B   (Note/Nota info boxes)
+    Danger            #EF4444   (login error messages)
+    Border            #D1E3FF   (tree lines, card borders, dividers)
+    Figure Placeholder #F1F5F9  (figure callout box background)
+
+  Typography:
+    Font: System font stack — 
+      font-family: 'Segoe UI', 'Inter', Arial, sans-serif
+    Body: 14px / line-height: 1.7
+    H2 (section title): 22px, font-weight: 600, color: #1A4FBA
+    H3 (subsection): 17px, font-weight: 600, color: #0F1E3C
+    Tree labels: 13px, color: #0F1E3C
+    Breadcrumb: 12px, color: #64748B
+    Code/note: 13px, font-family: monospace
+
+  Spacing: 8px base unit
+  Border radius: 8px cards/buttons, 4px inputs, 2px tree indicators
+
+  Left panel tree connector lines:
+    Vertical connecting lines between siblings: 
+    1px dashed #D1E3FF, left-offset matching indent level
+    Active node: left-border 3px solid #1A4FBA, 
+                 background: #EBF3FF, font-weight: 600
+
+  Step number badges (numbered instructions):
+    Circle 24px diameter, background: #1A4FBA, 
+    color: white, font-size: 12px, font-weight: 600,
+    displayed inline-flex before the step text
+
+  Figure placeholder boxes:
+    background: #F1F5F9, border: 1px dashed #D1E3FF,
+    border-radius: 8px, padding: 16px, 
+    text-align: center, font-style: italic,
+    color: #64748B, margin: 16px 0
+
+  Note/Nota boxes:
+    background: #FFFBEB, border-left: 4px solid #F59E0B,
+    border-radius: 4px, padding: 12px 16px, margin: 16px 0
+    Prefix with ⚠ icon and bold "Nota:"
+
+  Scrollbar styling (webkit):
+    Width: 6px, thumb: #D1E3FF, track: transparent
+
+RESPONSIVE BREAKPOINTS:
+  Desktop (≥ 1024px): 
+    Left panel fixed 280px, content panel fills rest, navbar full
+  Tablet (768px–1023px): 
+    Left panel 240px, content panel fills rest
+  Mobile (< 768px): 
+    Left panel hidden by default, hamburger toggles slide-in drawer 
+    (width 85%, overlay with semi-transparent backdrop)
+    Navbar: logo only + hamburger + logout icon
+    Content panel: full width, 16px side padding
+
+ANIMATIONS:
+  • Tree expand/collapse: max-height 0→auto, opacity 0→1, 200ms ease
+  • Login → Portal transition: fadeOut login (300ms), fadeIn portal (300ms)
+  • Portal → Login transition: same reverse
+  • Content panel load: opacity 0→1, translateY 8px→0, 200ms ease
+  • Tree node hover: background transition 150ms
+  • Active node indicator: left-border slide-in 150ms
+  • Mobile drawer: transform translateX(-100%→0), 250ms ease
+
+ACCESSIBILITY:
+  • All tree nodes: role="treeitem", aria-expanded, aria-selected
+  • Tree container: role="tree"
+  • Login form: proper label/for associations
+  • Focus ring visible on all interactive elements 
+    (outline: 2px solid #0EA5E9)
+  • Keyboard navigation: 
+      Tab through tree items,
+      Enter/Space to expand or select,
+      Arrow keys to move between tree nodes
+  • Skip-to-content link at top of page
+
+PRINT STYLES:
+  @media print:
+    Hide: navbar, left panel, search box, logout button, print button,
+          "Voltar ao Topo" button
+    Show: content panel only, full width, black text on white
+    Add: header with "CSM Technologies — Projeto SIMple — [Section Title]"
+    Page break before each H2
+    Figure placeholders: show border + caption only (no background)
+
+DELIVERABLE RULES:
+  • Generate the complete file(s) with no truncation
+  • Every section's content field must contain the FULL Portuguese text 
+    from the source documents — not shortened summaries
+  • All figure references replaced with styled placeholder divs
+  • All numbered step instructions use the badge styling
+  • All "Nota:" instances styled as amber info boxes
+  • All tree interactions must be functional JavaScript — 
+    no placeholder onclick handlers
+  • The portal must work by opening index.html directly in a browser 
+    (no server required, no npm, no build step)
+  • Label the file clearly at the top: 
+    <!-- SIMple Project User Manual Portal — index.html — Complete File -->
