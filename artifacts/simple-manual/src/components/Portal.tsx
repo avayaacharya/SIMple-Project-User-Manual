@@ -77,7 +77,7 @@ export default function Portal({ userName, userModules, onLogout }: PortalProps)
             <span />
             <span />
           </button>
-          <div className="navbar-logo" aria-hidden="true">CSM</div>
+          <img src="/nosi-logo.jpg" alt="NOS-i logo" className="navbar-logo-img" />
           <span className="navbar-title">SIMple — Manual do Utilizador</span>
         </div>
         <div className="navbar-right">
