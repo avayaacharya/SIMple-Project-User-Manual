@@ -1,6 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Module } from '../data/types';
 
+function upgradeFigures(html: string): string {
+  return html.replace(
+    /<div class="figure-placeholder">([^<]+)<\/div>/g,
+    (_match, caption: string) => `
+      <div class="figure-placeholder">
+        <span class="figure-placeholder-tag">FIGURA</span>
+        <span class="figure-placeholder-label">${caption.trim()}</span>
+      </div>`
+  );
+}
+
 interface ContentPanelProps {
   modules: Module[];
   activeId: string | null;
@@ -93,7 +104,7 @@ export default function ContentPanel({ modules, activeId, onPrint }: ContentPane
           <>
             <div
               className="content-body"
-              dangerouslySetInnerHTML={{ __html: content }}
+              dangerouslySetInnerHTML={{ __html: upgradeFigures(content) }}
             />
             <footer className="doc-footer">
               CSM Technologies &nbsp;|&nbsp; Documento CSM/QT/01/01 &nbsp;|&nbsp; Rev 1.0 &nbsp;|&nbsp; Projeto SIMple
