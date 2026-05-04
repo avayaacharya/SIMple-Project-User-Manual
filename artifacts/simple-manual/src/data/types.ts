@@ -28,4 +28,5 @@ export const USERS: Record<string, { password: string; name: string; modules: st
   'EMP001': { password: 'senha123', name: 'Ravi Shankar',  modules: ['hr', 'contracts'] },
   'EMP002': { password: 'senha123', name: 'Priya Menon',   modules: ['hr'] },
   'EMP003': { password: 'senha123', name: 'Arjun Das',     modules: ['contracts'] },
+  'EMP004': { password: 'Pass1234', name: 'Roberto',       modules: ['hr', 'contracts'] },
 };
