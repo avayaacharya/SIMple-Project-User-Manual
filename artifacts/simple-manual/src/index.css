@@ -682,6 +682,14 @@ mark.highlight {
   display: block;
 }
 
+.inline-icon {
+  height: 20px;
+  width: auto;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 2px;
+}
+
 .doc-figure-caption {
   display: block;
   font-style: italic;

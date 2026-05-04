@@ -78,7 +78,10 @@ export const hrModule: Module = {
           <img src="/fig-1-1-login.jpg" alt="Ecrã de Login do SIMple Project" class="doc-figure-img" />
           <figcaption class="doc-figure-caption">Figura 1-1: Ecrã de Login do SIMple Project</figcaption>
         </figure>
-        <div class="figure-placeholder">Figura 1-2: Painel principal com menu lateral de Recursos Humanos</div>
+        <figure class="doc-figure">
+          <img src="/fig-1-2-dashboard.jpg" alt="Painel principal com menu lateral de Recursos Humanos" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 1-2: Painel principal com menu lateral de Recursos Humanos</figcaption>
+        </figure>
       `
     },
     'hr-2': {
@@ -101,13 +104,13 @@ export const hrModule: Module = {
         <h2>2.1 Registo de Emprego</h2>
         <p>O ecrã de Registo de Emprego permite a gestão completa da lista de funcionários da organização. Neste ecrã, o utilizador pode visualizar todos os colaboradores registados, bem como adicionar novos funcionários ao sistema.</p>
         <figure class="doc-figure">
-          <img src="/fig-2-1-funcionarios.jpg" alt="Ecrã de Lista de Funcionários — Registo de Emprego" class="doc-figure-img" />
+          <img src="/fig-2-1-lista-func.jpg" alt="Ecrã de Lista de Funcionários — Registo de Emprego" class="doc-figure-img" />
           <figcaption class="doc-figure-caption">Figura 2-1: Ecrã de Lista de Funcionários — Registo de Emprego</figcaption>
         </figure>
         <h3>Lista de Funcionários</h3>
         <p>O ecrã principal apresenta uma tabela com todos os funcionários registados no sistema. Para cada funcionário, estão disponíveis as seguintes ações:</p>
         <ul>
-          <li><strong>Ver</strong> — Visualizar os detalhes completos do funcionário;</li>
+          <li><img src="/icon-ver.png" alt="" class="inline-icon" /> <strong>Ver</strong> — Visualizar os detalhes completos do funcionário;</li>
           <li><strong>Editar</strong> — Alterar os dados do funcionário;</li>
           <li><strong>Eliminar</strong> — Remover o registo do funcionário (requer confirmação).</li>
         </ul>
@@ -118,9 +121,18 @@ export const hrModule: Module = {
           <li><span class="step-badge">2</span><span><strong>Dados Pessoais</strong> — Preenchimento dos dados pessoais do funcionário, incluindo nome completo, data de nascimento, género, estado civil, morada, contactos e informações de identificação (BI/Passaporte, NIF).</span></li>
           <li><span class="step-badge">3</span><span><strong>Anexo</strong> — Carregamento de documentos relevantes, como fotografia, documentos de identificação e outros documentos exigidos pelo departamento de RH.</span></li>
         </ol>
-        <div class="figure-placeholder">Figura 2-2: Popup de Novo Funcionário — Separador "Validar Registo"</div>
-        <div class="figure-placeholder">Figura 2-3: Popup de Novo Funcionário — Separador "Dados Pessoais"</div>
-        <div class="figure-placeholder">Figura 2-4: Popup de Novo Funcionário — Separador "Anexo"</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-2-popup-validar.jpg" alt="Popup de Novo Funcionário — Separador Validar Registo" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-2: Popup de Novo Funcionário — Separador "Validar Registo"</figcaption>
+        </figure>
+        <figure class="doc-figure">
+          <img src="/fig-2-3-popup-dados.jpg" alt="Popup de Novo Funcionário — Separador Dados Pessoais" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-3: Popup de Novo Funcionário — Separador "Dados Pessoais"</figcaption>
+        </figure>
+        <figure class="doc-figure">
+          <img src="/fig-2-4-popup-anexo.jpg" alt="Popup de Novo Funcionário — Separador Anexo" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-4: Popup de Novo Funcionário — Separador "Anexo"</figcaption>
+        </figure>
         <div class="note-box"><strong>⚠ Nota:</strong> Após preencher todos os campos obrigatórios (assinalados com *), clique em <strong>Guardar</strong> para concluir o registo. O novo funcionário ficará imediatamente disponível na lista de colaboradores.</div>
       `
     },
@@ -146,7 +158,10 @@ export const hrModule: Module = {
       content: `
         <h2>2.2.1 Atribuição de Licenças</h2>
         <p>O ecrã de Atribuição de Licenças permite ao departamento de RH gerir a atribuição de diferentes tipos de licença aos colaboradores da organização, bem como consultar o planeamento global das licenças.</p>
-        <div class="figure-placeholder">Figura 2-5: Ecrã de Atribuição de Licenças</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-5-atribuicao.jpg" alt="Ecrã de Atribuição de Licenças" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-5: Ecrã de Atribuição de Licenças</figcaption>
+        </figure>
         <h3>Lista de Atribuições</h3>
         <p>O ecrã principal apresenta uma lista com todas as licenças atribuídas, indicando o colaborador, o tipo de licença, o período e o estado (Pendente, Aprovada, Rejeitada).</p>
         <h3>Atribuir Nova Licença</h3>
@@ -159,7 +174,10 @@ export const hrModule: Module = {
           <li><span class="step-badge">5</span><span>Preencha o campo <strong>Justificação</strong> com a descrição adequada e anexe os documentos de suporte necessários.</span></li>
           <li><span class="step-badge">6</span><span>Clique em <strong>Submeter</strong> para enviar a solicitação para aprovação.</span></li>
         </ol>
-        <div class="figure-placeholder">Figura 2-6: Formulário de Atribuição de Licença</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-6-form-atribuicao.jpg" alt="Formulário de Atribuição de Licença" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-6: Formulário de Atribuição de Licença</figcaption>
+        </figure>
         <h3>Ecrã de Planeamento</h3>
         <p>O ecrã de Planeamento apresenta uma visão calendárica das licenças atribuídas, permitindo identificar facilmente os períodos de ausência planeados para cada colaborador ou departamento.</p>
         <div class="figure-placeholder">Figura 2-7: Ecrã de Planeamento de Licenças</div>
@@ -172,7 +190,10 @@ export const hrModule: Module = {
       content: `
         <h2>2.2.2 Plano de Férias</h2>
         <p>O ecrã de Plano de Férias permite a gestão e marcação das férias anuais dos colaboradores. O sistema controla automaticamente os saldos de férias, tendo em conta os dias disponíveis, os dias já gozados e os dias transitados do ano anterior.</p>
-        <div class="figure-placeholder">Figura 2-8: Ecrã de Lista do Plano de Férias</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-8-ferias-lista.jpg" alt="Ecrã de Lista do Plano de Férias" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-8: Ecrã de Lista do Plano de Férias</figcaption>
+        </figure>
         <h3>Lista de Planos de Férias</h3>
         <p>O ecrã apresenta uma lista com todos os planos de férias registados para o ano corrente, incluindo informação sobre o estado de aprovação de cada pedido.</p>
         <h3>Marcar Férias</h3>
@@ -188,7 +209,10 @@ export const hrModule: Module = {
           <li><strong>Descrição</strong> — Campo opcional para observações adicionais;</li>
           <li><strong>Anexar Documento</strong> — Possibilidade de anexar documentos relevantes (opcional).</li>
         </ul>
-        <div class="figure-placeholder">Figura 2-9: Formulário de Marcação de Férias</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-9-form-ferias.jpg" alt="Formulário de Marcação de Férias" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-9: Formulário de Marcação de Férias</figcaption>
+        </figure>
         <ol>
           <li><span class="step-badge">1</span><span>Selecione o <strong>Trimestre</strong> correspondente ao período de férias pretendido.</span></li>
           <li><span class="step-badge">2</span><span>Defina a <strong>Data de Início</strong> (<em>De</em>) e a <strong>Data de Fim</strong> (<em>Até</em>). O sistema calculará automaticamente o número de dias úteis.</span></li>
@@ -205,7 +229,10 @@ export const hrModule: Module = {
       content: `
         <h2>2.2.3 Assiduidade Diária</h2>
         <p>O ecrã de Assiduidade Diária permite o registo e consulta das entradas e saídas dos colaboradores, possibilitando o controlo rigoroso das horas trabalhadas por cada funcionário em cada dia.</p>
-        <div class="figure-placeholder">Figura 2-10: Ecrã de Assiduidade Diária</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-10-assiduidade.jpg" alt="Ecrã de Assiduidade Diária" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-10: Ecrã de Assiduidade Diária</figcaption>
+        </figure>
         <h3>Funcionalidades do Ecrã</h3>
         <p>O ecrã de Assiduidade Diária dispõe das seguintes funcionalidades:</p>
         <ul>
@@ -237,7 +264,10 @@ export const hrModule: Module = {
       content: `
         <h2>2.2.4 Gestão de Ausências</h2>
         <p>O ecrã de Gestão de Ausências permite o registo e acompanhamento das ausências não programadas dos colaboradores, assegurando um controlo rigoroso e completo de todas as situações de falta ao trabalho.</p>
-        <div class="figure-placeholder">Figura 2-12: Ecrã Principal de Gestão de Ausências</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-12-ausencias.jpg" alt="Ecrã Principal de Gestão de Ausências" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-12: Ecrã Principal de Gestão de Ausências</figcaption>
+        </figure>
         <p>O ecrã disponibiliza dois modos de pesquisa e registo de ausências:</p>
         <h3>Modo 1: Por Centro de Custo</h3>
         <p>Este modo permite registar e consultar as ausências agrupadas por centro de custo. O formulário inclui os seguintes campos:</p>
@@ -254,7 +284,10 @@ export const hrModule: Module = {
           <li><strong>Carregar Ficheiro</strong> — Upload do documento justificativo;</li>
           <li><strong>Descrição</strong> — Campo de observações adicionais.</li>
         </ul>
-        <div class="figure-placeholder">Figura 2-13: Formulário de Registo de Ausência por Centro de Custo</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-13-centro-custos.jpg" alt="Formulário de Registo de Ausência por Centro de Custo" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-13: Formulário de Registo de Ausência por Centro de Custo</figcaption>
+        </figure>
         <h3>Modo 2: Por Funcionário</h3>
         <p>Este modo permite pesquisar diretamente por funcionário para consultar e gerir as suas ausências individualmente.</p>
         <ol>
@@ -263,7 +296,10 @@ export const hrModule: Module = {
           <li><span class="step-badge">3</span><span>Clique no botão de ação para aceder ao formulário de registo de ausência para esse funcionário.</span></li>
           <li><span class="step-badge">4</span><span>Preencha os campos do formulário e clique em <strong>Guardar</strong>.</span></li>
         </ol>
-        <div class="figure-placeholder">Figura 2-14: Pesquisa de Ausências por Funcionário</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-14-form-ausencias.jpg" alt="Pesquisa de Ausências por Funcionário" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-14: Pesquisa de Ausências por Funcionário</figcaption>
+        </figure>
         <div class="note-box"><strong>⚠ Nota:</strong> O registo de ausências deve ser efetuado o mais brevemente possível. As ausências não justificadas no prazo estabelecido pela organização podem ter implicações disciplinares para o colaborador. Certifique-se de que o documento justificativo é anexado em formato PDF ou imagem (JPG, PNG).</div>
       `
     },
@@ -273,7 +309,10 @@ export const hrModule: Module = {
       content: `
         <h2>2.2.5 Gestão de Horas Extraordinárias</h2>
         <p>O ecrã de Gestão de Horas Extraordinárias permite o registo e controlo das horas de trabalho realizadas fora do horário normal pelos colaboradores. O sistema suporta dois modos de registo — por Centro de Custo e por Funcionário — adaptando-se às diferentes necessidades de gestão.</p>
-        <div class="figure-placeholder">Figura 2-15: Ecrã de Lista de Horas Extraordinárias</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-15-horas-ext.jpg" alt="Ecrã de Lista de Horas Extraordinárias" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-15: Ecrã de Lista de Horas Extraordinárias</figcaption>
+        </figure>
         <h3>Lista de Horas Extraordinárias</h3>
         <p>O ecrã principal apresenta uma lista com todos os registos de horas extraordinárias, incluindo o colaborador, o tipo, a data, o total de horas e o estado de aprovação.</p>
         <h3>Registar Horas Extraordinárias</h3>
@@ -287,7 +326,10 @@ export const hrModule: Module = {
           <li><strong>Total de Horas</strong> — Número total de horas extraordinárias realizadas;</li>
           <li><strong>Documento de Suporte</strong> — Documento justificativo do trabalho realizado (upload).</li>
         </ul>
-        <div class="figure-placeholder">Figura 2-16: Formulário de Registo de Horas Extraordinárias</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-16-form-horas-ext.jpg" alt="Formulário de Registo de Horas Extraordinárias" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-16: Formulário de Registo de Horas Extraordinárias</figcaption>
+        </figure>
         <h4>Adicionar Mais Funcionários</h4>
         <p>O formulário permite registar horas extraordinárias para múltiplos funcionários em simultâneo. Para adicionar mais colaboradores, clique no botão <strong>Adicionar Mais Funcionários</strong> e repita o processo de seleção e preenchimento para cada colaborador adicional.</p>
         <ol>
@@ -322,7 +364,10 @@ export const hrModule: Module = {
       content: `
         <h2>2.3.1 Certificado de Declaração de Emprego</h2>
         <p>O Certificado de Declaração de Emprego é um documento oficial que comprova o vínculo laboral do colaborador com a organização, indicando o cargo, a data de início de funções e outras informações profissionais relevantes.</p>
-        <div class="figure-placeholder">Figura 2-17: Ecrã de Emissão de Certificado de Declaração de Emprego</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-17-cert-emprego.jpg" alt="Ecrã de Emissão de Certificado de Declaração de Emprego" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-17: Ecrã de Emissão de Certificado de Declaração de Emprego</figcaption>
+        </figure>
         <h3>Como Emitir o Certificado</h3>
         <p>Para gerar um Certificado de Declaração de Emprego, siga os passos seguintes:</p>
         <ol>
@@ -331,9 +376,12 @@ export const hrModule: Module = {
           <li><span class="step-badge">3</span><span>Selecione o colaborador na lista de resultados.</span></li>
           <li><span class="step-badge">4</span><span>Verifique se os dados apresentados estão corretos e atualizados.</span></li>
           <li><span class="step-badge">5</span><span>Clique no botão <strong>Gerar Certificado</strong>. O sistema processará o pedido e gerará automaticamente o documento em formato PDF.</span></li>
-          <li><span class="step-badge">6</span><span>Clique em <strong>Descarregar</strong> para guardar o ficheiro PDF no seu dispositivo ou em <strong>Imprimir</strong> para impressão imediata.</span></li>
+          <li><span class="step-badge">6</span><span>Clique em <strong>Descarregar</strong> <img src="/icon-download.png" alt="" class="inline-icon" /> para guardar o ficheiro PDF no seu dispositivo ou em <strong>Imprimir</strong> para impressão imediata.</span></li>
         </ol>
-        <div class="figure-placeholder">Figura 2-18: Pré-visualização do Certificado de Declaração de Emprego</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-18-preview-emprego.jpg" alt="Pré-visualização do Certificado de Declaração de Emprego" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-18: Pré-visualização do Certificado de Declaração de Emprego</figcaption>
+        </figure>
         <div class="note-box"><strong>⚠ Nota:</strong> O certificado gerado pelo sistema possui validade legal e inclui a assinatura digital do responsável de RH e o carimbo eletrónico da organização. Em caso de necessidade de assinatura manuscrita, imprima o documento e proceda à assinatura manual.</div>
       `
     },
@@ -343,7 +391,10 @@ export const hrModule: Module = {
       content: `
         <h2>2.3.2 Certificado de Declaração Salarial</h2>
         <p>O Certificado de Declaração Salarial é um documento oficial que atesta a remuneração auferida pelo colaborador, sendo frequentemente solicitado para fins bancários, habitacionais ou fiscais.</p>
-        <div class="figure-placeholder">Figura 2-19: Ecrã de Emissão de Certificado de Declaração Salarial</div>
+        <figure class="doc-figure">
+          <img src="/fig-2-19-cert-salarial.jpg" alt="Ecrã de Emissão de Certificado de Declaração Salarial" class="doc-figure-img" />
+          <figcaption class="doc-figure-caption">Figura 2-19: Ecrã de Emissão de Certificado de Declaração Salarial</figcaption>
+        </figure>
         <h3>Como Emitir o Certificado Salarial</h3>
         <p>Para gerar um Certificado de Declaração Salarial, siga os passos seguintes:</p>
         <ol>
@@ -352,7 +403,7 @@ export const hrModule: Module = {
           <li><span class="step-badge">3</span><span>Selecione o colaborador pretendido e verifique os dados salariais apresentados.</span></li>
           <li><span class="step-badge">4</span><span>Selecione o <strong>Ano</strong> e o <strong>Período</strong> para o qual se pretende emitir a declaração salarial.</span></li>
           <li><span class="step-badge">5</span><span>Clique em <strong>Gerar Certificado</strong> para processar o pedido.</span></li>
-          <li><span class="step-badge">6</span><span>Após a geração do documento, clique em <strong>Descarregar</strong> para guardar o PDF ou <strong>Imprimir</strong> para impressão direta.</span></li>
+          <li><span class="step-badge">6</span><span>Após a geração do documento, clique em <strong>Descarregar</strong> <img src="/icon-download.png" alt="" class="inline-icon" /> para guardar o PDF ou <strong>Imprimir</strong> para impressão direta.</span></li>
         </ol>
         <div class="figure-placeholder">Figura 2-20: Pré-visualização do Certificado de Declaração Salarial</div>
         <div class="note-box"><strong>⚠ Nota:</strong> A declaração salarial inclui informação confidencial sobre a remuneração do colaborador. Assegure-se de que o documento é entregue exclusivamente ao colaborador a quem diz respeito ou, mediante autorização expressa do mesmo, a terceiros devidamente identificados. Este documento tem validade de 90 dias a partir da data de emissão.</div>
