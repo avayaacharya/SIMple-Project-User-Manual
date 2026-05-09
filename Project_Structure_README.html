@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIMple Project — Project Structure README</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:        #1e3a8a;
+      --blue-mid:    #2563eb;
+      --blue-light:  #dbeafe;
+      --blue-pale:   #eff6ff;
+      --green:       #15803d;
+      --green-bg:    #dcfce7;
+      --amber:       #b45309;
+      --amber-bg:    #fef3c7;
+      --purple:      #7c3aed;
+      --purple-bg:   #ede9fe;
+      --rose:        #be185d;
+      --rose-bg:     #fce7f3;
+      --slate:       #475569;
+      --border:      #e2e8f0;
+      --bg:          #f8fafc;
+      --white:       #ffffff;
+      --text:        #0f172a;
+      --muted:       #64748b;
+      --radius:      8px;
+      --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #1d4ed8 100%);
+      color: #fff;
+      padding: 52px 32px 44px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: #93c5fd;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 800; letter-spacing: -.4px; margin-bottom: 8px; }
+    .hero h1 em { font-style: normal; color: #93c5fd; }
+    .hero p { font-size: .95rem; opacity: .75; max-width: 520px; margin: 0 auto 20px; }
+    .pill-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .pill {
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── SECTION ────────────────────────────────────────── */
+    .sec { margin-bottom: 52px; }
+    .sec-title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.05rem; font-weight: 700; color: var(--blue);
+      border-bottom: 2px solid var(--blue-light);
+      padding-bottom: 10px; margin-bottom: 20px;
+    }
+    .sec-icon {
+      width: 30px; height: 30px; border-radius: 7px;
+      background: var(--blue-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+    }
+
+    /* ── QUICK STATS ────────────────────────────────────── */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+    .stat {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 18px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .stat-num { font-size: 1.6rem; font-weight: 800; color: var(--blue-mid); line-height: 1; }
+    .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 500; }
+
+    /* ── FILE TREE ──────────────────────────────────────── */
+    .tree-wrap {
+      background: #0f172a; color: #cbd5e1;
+      border-radius: var(--radius); padding: 28px 24px;
+      font-family: var(--mono); font-size: 13px; line-height: 2;
+      overflow-x: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    }
+    .t-dir   { color: #60a5fa; font-weight: 700; }
+    .t-key   { color: #86efac; }
+    .t-img   { color: #fcd34d; }
+    .t-icon  { color: #f9a8d4; }
+    .t-css   { color: #c4b5fd; }
+    .t-note  { color: #475569; font-style: italic; }
+    .t-root  { color: #94a3b8; }
+
+    /* ── FILE TABLE ─────────────────────────────────────── */
+    .ftable { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.07); }
+    .ftable thead tr { background: var(--blue); color: #fff; }
+    .ftable th { padding: 11px 16px; font-size: 12.5px; font-weight: 600; text-align: left; }
+    .ftable td { padding: 10px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .ftable tbody tr:last-child td { border-bottom: none; }
+    .ftable tbody tr:hover { background: var(--blue-pale); }
+    code {
+      font-family: var(--mono);
+      background: #f1f5f9; border: 1px solid #e2e8f0;
+      border-radius: 4px; padding: 1px 6px;
+      font-size: 12.5px; color: var(--rose);
+    }
+    .badge {
+      display: inline-block; border-radius: 5px;
+      padding: 2px 8px; font-size: 11px; font-weight: 600;
+    }
+    .b-blue   { background: var(--blue-light);  color: var(--blue-mid); }
+    .b-green  { background: var(--green-bg);    color: var(--green); }
+    .b-amber  { background: var(--amber-bg);    color: var(--amber); }
+    .b-purple { background: var(--purple-bg);   color: var(--purple); }
+    .b-rose   { background: var(--rose-bg);     color: var(--rose); }
+
+    /* ── DEPENDENCY TABLE ───────────────────────────────── */
+    .deps { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:600px){ .deps { grid-template-columns: 1fr; } }
+    .dep-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .dep-header {
+      background: var(--blue); color: #fff;
+      padding: 9px 16px; font-size: 12.5px; font-weight: 700;
+    }
+    .dep-list { padding: 12px 16px; }
+    .dep-list li { list-style: none; font-size: 13px; padding: 4px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+    .dep-list li:last-child { border-bottom: none; }
+    .dep-ver { color: var(--muted); font-family: var(--mono); font-size: 12px; }
+
+    /* ── IMAGE GRID ─────────────────────────────────────── */
+    .img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+    .img-row {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 10px 14px;
+      font-size: 13px; display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+    .img-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-jpg { background: #f59e0b; }
+    .dot-png { background: #10b981; }
+
+    /* ── DATA FLOW ──────────────────────────────────────── */
+    .flow {
+      display: flex; align-items: center; gap: 0;
+      flex-wrap: wrap; margin: 8px 0;
+    }
+    .flow-box {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 6px; padding: 8px 16px;
+      font-size: 13px; font-weight: 600; color: var(--blue);
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .flow-arrow { padding: 0 10px; color: var(--muted); font-size: 18px; }
+
+    /* ── SCRIPTS TABLE ──────────────────────────────────── */
+    .script-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    .script-table th { background: var(--blue); color: #fff; padding: 10px 16px; text-align: left; font-size: 12.5px; }
+    .script-table td { padding: 10px 16px; font-size: 13.5px; border-bottom: 1px solid var(--border); }
+    .script-table tbody tr:last-child td { border-bottom: none; }
+    .script-table tbody tr:hover { background: var(--blue-pale); }
+
+    /* ── AUTH DIAGRAM ───────────────────────────────────── */
+    .auth-flow {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .auth-step {
+      display: flex; gap: 14px; align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .auth-num {
+      min-width: 26px; height: 26px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .auth-step p { font-size: 13.5px; }
+
+    /* ── NOTE ───────────────────────────────────────────── */
+    .note {
+      background: var(--amber-bg); border-left: 4px solid #d97706;
+      border-radius: var(--radius); padding: 12px 16px;
+      font-size: 13.5px; margin-top: 14px;
+    }
+    .note strong { color: #92400e; }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      text-align: center; padding: 20px;
+      font-size: 12.5px; color: var(--muted);
+      border-top: 1px solid var(--border); margin-top: 40px;
+    }
+
+    @media(max-width:600px){
+      .hero h1 { font-size: 1.4rem; }
+      .wrap { padding: 24px 14px 60px; }
+      .tree-wrap { font-size: 11.5px; padding: 18px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Project Structure</div>
+  <h1><em>SIMple</em> Project — User Manual Portal</h1>
+  <p>Complete structural breakdown of every file, folder, dependency, image asset, and data flow in the portal.</p>
+  <div class="pill-row">
+    <span class="pill">React 18</span>
+    <span class="pill">Vite 6</span>
+    <span class="pill">TypeScript 5.9</span>
+    <span class="pill">pnpm workspace</span>
+    <span class="pill">No Backend</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- QUICK STATS -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">📊</div> At a Glance</div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">Core components</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Data files</div></div>
+      <div class="stat"><div class="stat-num">56</div><div class="stat-lbl">Radix UI components</div></div>
+      <div class="stat"><div class="stat-num">19</div><div class="stat-lbl">Screenshot images</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-lbl">Inline action icons</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-lbl">Content modules</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-lbl">Backend / API calls</div></div>
+      <div class="stat"><div class="stat-num">1</div><div class="stat-lbl">CSS file (design system)</div></div>
+    </div>
+  </div>
+
+  <!-- FULL FILE TREE -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">🌳</div> Full File Tree</div>
+    <div class="tree-wrap">
+<span class="t-root">artifacts/simple-manual/</span>
+│
+├── <span class="t-dir">public/</span>                              <span class="t-note"># Static assets — served at root /</span>
+│   ├── <span class="t-img">fig-1-1-login.jpg</span>               <span class="t-note"># Figura 1-1  : IGRP login screen</span>
+│   ├── <span class="t-img">fig-1-2-dashboard.jpg</span>           <span class="t-note"># Figura 1-2  : Main dashboard panel</span>
+│   ├── <span class="t-img">fig-2-1-lista-func.jpg</span>          <span class="t-note"># Figura 2-1  : Employee list</span>
+│   ├── <span class="t-img">fig-2-2-popup-validar.jpg</span>       <span class="t-note"># Figura 2-2  : Validate record popup</span>
+│   ├── <span class="t-img">fig-2-3-popup-dados.jpg</span>         <span class="t-note"># Figura 2-3  : Personal data popup</span>
+│   ├── <span class="t-img">fig-2-4-popup-anexo.jpg</span>         <span class="t-note"># Figura 2-4  : Attachment popup</span>
+│   ├── <span class="t-img">fig-2-5-atribuicao.jpg</span>          <span class="t-note"># Figura 2-5  : Leave assignment screen</span>
+│   ├── <span class="t-img">fig-2-6-form-atribuicao.jpg</span>     <span class="t-note"># Figura 2-6  : Leave assignment form</span>
+│   ├── <span class="t-img">fig-2-8-ferias-lista.jpg</span>        <span class="t-note"># Figura 2-8  : Holiday plan list</span>
+│   ├── <span class="t-img">fig-2-9-form-ferias.jpg</span>         <span class="t-note"># Figura 2-9  : Holiday booking form</span>
+│   ├── <span class="t-img">fig-2-10-assiduidade.jpg</span>        <span class="t-note"># Figura 2-10 : Daily attendance screen</span>
+│   ├── <span class="t-img">fig-2-12-ausencias.jpg</span>          <span class="t-note"># Figura 2-12 : Absence management</span>
+│   ├── <span class="t-img">fig-2-13-centro-custos.jpg</span>      <span class="t-note"># Figura 2-13 : Cost centre form</span>
+│   ├── <span class="t-img">fig-2-14-form-ausencias.jpg</span>     <span class="t-note"># Figura 2-14 : Absence by employee</span>
+│   ├── <span class="t-img">fig-2-15-horas-ext.jpg</span>          <span class="t-note"># Figura 2-15 : Overtime list</span>
+│   ├── <span class="t-img">fig-2-16-form-horas-ext.jpg</span>     <span class="t-note"># Figura 2-16 : Overtime form</span>
+│   ├── <span class="t-img">fig-2-17-cert-emprego.jpg</span>       <span class="t-note"># Figura 2-17 : Employment certificate</span>
+│   ├── <span class="t-img">fig-2-18-preview-emprego.jpg</span>    <span class="t-note"># Figura 2-18 : Certificate preview</span>
+│   ├── <span class="t-img">fig-2-19-cert-salarial.jpg</span>      <span class="t-note"># Figura 2-19 : Salary certificate</span>
+│   ├── <span class="t-icon">icon-ver.png</span>                    <span class="t-note"># Inline icon  : View action</span>
+│   ├── <span class="t-icon">icon-atribuir.png</span>               <span class="t-note"># Inline icon  : Assign action</span>
+│   ├── <span class="t-icon">icon-ferias.png</span>                 <span class="t-note"># Inline icon  : Holiday action</span>
+│   ├── <span class="t-icon">icon-ausencia.png</span>               <span class="t-note"># Inline icon  : Absence action</span>
+│   ├── <span class="t-icon">icon-horas.png</span>                  <span class="t-note"># Inline icon  : Overtime action</span>
+│   ├── <span class="t-icon">icon-download.png</span>               <span class="t-note"># Inline icon  : Download button</span>
+│   ├── <span class="t-img">nosi-logo.jpg</span>                   <span class="t-note"># NOS-i logo   : Navbar post-login</span>
+│   └── <span class="t-img">favicon.svg</span>                     <span class="t-note"># Browser tab icon</span>
+│
+├── <span class="t-dir">src/</span>
+│   │
+│   ├── <span class="t-key">main.tsx</span>                        <span class="t-note"># React entry point — mounts &lt;App /&gt;</span>
+│   ├── <span class="t-key">App.tsx</span>                         <span class="t-note"># Root — routes between Login and Portal</span>
+│   ├── <span class="t-css">index.css</span>                       <span class="t-note"># Full CSM Blue design system (custom CSS)</span>
+│   │
+│   ├── <span class="t-dir">components/</span>                     <span class="t-note"># Core UI components</span>
+│   │   ├── <span class="t-key">LoginPage.tsx</span>               <span class="t-note"># Auth screen — Employee ID + password</span>
+│   │   ├── <span class="t-key">Portal.tsx</span>                  <span class="t-note"># Shell: navbar, sidebar, layout switcher</span>
+│   │   ├── <span class="t-key">TreeNav.tsx</span>                 <span class="t-note"># Collapsible tree navigation panel</span>
+│   │   ├── <span class="t-key">ContentPanel.tsx</span>            <span class="t-note"># HTML renderer + upgradeFigures() hook</span>
+│   │   │
+│   │   └── <span class="t-dir">ui/</span>                         <span class="t-note"># Radix UI + shadcn component library (56 files)</span>
+│   │       ├── accordion.tsx
+│   │       ├── alert-dialog.tsx · alert.tsx · avatar.tsx · badge.tsx
+│   │       ├── button.tsx · button-group.tsx · calendar.tsx · card.tsx
+│   │       ├── carousel.tsx · chart.tsx · checkbox.tsx · collapsible.tsx
+│   │       ├── command.tsx · context-menu.tsx · dialog.tsx · drawer.tsx
+│   │       ├── dropdown-menu.tsx · empty.tsx · field.tsx · form.tsx
+│   │       ├── hover-card.tsx · input.tsx · input-group.tsx · input-otp.tsx
+│   │       ├── item.tsx · kbd.tsx · label.tsx · menubar.tsx
+│   │       ├── navigation-menu.tsx · pagination.tsx · popover.tsx · progress.tsx
+│   │       ├── radio-group.tsx · resizable.tsx · scroll-area.tsx · select.tsx
+│   │       ├── separator.tsx · sheet.tsx · sidebar.tsx · skeleton.tsx
+│   │       ├── slider.tsx · sonner.tsx · spinner.tsx · switch.tsx
+│   │       ├── table.tsx · tabs.tsx · textarea.tsx · toast.tsx · toaster.tsx
+│   │       └── toggle.tsx · toggle-group.tsx · tooltip.tsx
+│   │
+│   ├── <span class="t-dir">data/</span>                           <span class="t-note"># All content and auth data</span>
+│   │   ├── <span class="t-key">types.ts</span>                    <span class="t-note"># TypeScript types + USERS credentials map</span>
+│   │   ├── <span class="t-key">hr-content.ts</span>               <span class="t-note"># HR module: tree + all section HTML content</span>
+│   │   └── <span class="t-key">contracts-content.ts</span>        <span class="t-note"># Contracts module: tree + all section HTML</span>
+│   │
+│   ├── <span class="t-dir">hooks/</span>
+│   │   ├── <span class="t-key">use-mobile.tsx</span>              <span class="t-note"># Responsive breakpoint hook</span>
+│   │   └── <span class="t-key">use-toast.ts</span>                <span class="t-note"># Toast notification hook</span>
+│   │
+│   ├── <span class="t-dir">lib/</span>
+│   │   └── <span class="t-key">utils.ts</span>                    <span class="t-note"># cn() utility (clsx + tailwind-merge)</span>
+│   │
+│   └── <span class="t-dir">pages/</span>
+│       └── <span class="t-key">not-found.tsx</span>               <span class="t-note"># 404 fallback page</span>
+│
+├── <span class="t-key">package.json</span>                        <span class="t-note"># Package manifest — @workspace/simple-manual</span>
+├── <span class="t-key">vite.config.ts</span>                      <span class="t-note"># Vite build config (host, port, plugins)</span>
+└── <span class="t-key">tsconfig.json</span>                       <span class="t-note"># TypeScript config (strict, noEmit)</span>
+    </div>
+  </div>
+
+  <!-- CORE COMPONENTS -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">⚙️</div> Core Components — Responsibilities</div>
+    <table class="ftable">
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Role</th>
+          <th>Key Exports / Logic</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>App.tsx</code></td>
+          <td>Application root</td>
+          <td>Reads <code>sessionStorage</code> on load; renders <code>&lt;LoginPage&gt;</code> or <code>&lt;Portal&gt;</code> based on auth state.</td>
+          <td><span class="badge b-blue">Entry</span></td>
+        </tr>
+        <tr>
+          <td><code>LoginPage.tsx</code></td>
+          <td>Authentication screen</td>
+          <td>Validates Employee ID + password against <code>USERS</code> in <code>types.ts</code>; writes JSON to <code>sessionStorage['csm-auth']</code>.</td>
+          <td><span class="badge b-green">Component</span></td>
+        </tr>
+        <tr>
+          <td><code>Portal.tsx</code></td>
+          <td>Main shell</td>
+          <td>Renders navbar (with NOS-i logo), left tree panel, and content area. Handles module switching and logout.</td>
+          <td><span class="badge b-green">Component</span></td>
+        </tr>
+        <tr>
+          <td><code>TreeNav.tsx</code></td>
+          <td>Navigation tree</td>
+          <td>Receives the module's <code>tree[]</code> array and renders a collapsible multi-level navigation. Highlights the active section.</td>
+          <td><span class="badge b-green">Component</span></td>
+        </tr>
+        <tr>
+          <td><code>ContentPanel.tsx</code></td>
+          <td>Content renderer</td>
+          <td>Injects section HTML via <code>dangerouslySetInnerHTML</code>. Runs <code>upgradeFigures()</code> to auto-swap any legacy <code>figure-placeholder</code> divs with real <code>&lt;figure&gt;</code> elements. Includes a Print button.</td>
+          <td><span class="badge b-green">Component</span></td>
+        </tr>
+        <tr>
+          <td><code>data/types.ts</code></td>
+          <td>Types + credentials</td>
+          <td>Exports <code>USERS</code> map, and interfaces: <code>User</code>, <code>Module</code>, <code>Section</code>, <code>TreeNode</code>.</td>
+          <td><span class="badge b-purple">Data</span></td>
+        </tr>
+        <tr>
+          <td><code>data/hr-content.ts</code></td>
+          <td>HR module data</td>
+          <td>Exports <code>hrModule</code> with the full navigation tree and HTML content for all 14 HR sections (Figuras 1-1 → 2-19).</td>
+          <td><span class="badge b-purple">Data</span></td>
+        </tr>
+        <tr>
+          <td><code>data/contracts-content.ts</code></td>
+          <td>Contracts module data</td>
+          <td>Exports <code>contractsModule</code> with navigation tree and HTML content for all Contracts sections.</td>
+          <td><span class="badge b-purple">Data</span></td>
+        </tr>
+        <tr>
+          <td><code>index.css</code></td>
+          <td>Design system</td>
+          <td>Full CSM Blue design system: CSS custom properties, typography, <code>.doc-figure</code>, <code>.figure-placeholder</code>, <code>.inline-icon</code>, <code>.note-box</code>, <code>.step-badge</code>, print styles.</td>
+          <td><span class="badge b-rose">Styles</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DATA LAYER -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">🗃️</div> Data Layer — types.ts Structure</div>
+    <table class="ftable">
+      <thead><tr><th>Interface</th><th>Fields</th><th>Used By</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>User</code></td>
+          <td><code>name: string</code> · <code>modules: string[]</code></td>
+          <td>Portal.tsx — displays name in navbar; filters which modules are shown</td>
+        </tr>
+        <tr>
+          <td><code>Module</code></td>
+          <td><code>id</code> · <code>title</code> · <code>icon</code> · <code>sections</code> · <code>tree</code></td>
+          <td>Portal.tsx — module tab list; TreeNav.tsx — navigation; ContentPanel.tsx — section lookup</td>
+        </tr>
+        <tr>
+          <td><code>Section</code></td>
+          <td><code>title: string</code> · <code>content: string</code> (HTML) · <code>parent?: string</code></td>
+          <td>ContentPanel.tsx — renders the HTML; TreeNav.tsx — displays the title</td>
+        </tr>
+        <tr>
+          <td><code>TreeNode</code></td>
+          <td><code>id</code> · <code>label</code> · <code>children?: TreeNode[]</code> · <code>isLeaf?: boolean</code></td>
+          <td>TreeNav.tsx — builds the expandable tree structure recursively</td>
+        </tr>
+        <tr>
+          <td><code>USERS</code> (constant)</td>
+          <td><code>Record&lt;empId, { password, name, modules[] }&gt;</code></td>
+          <td>LoginPage.tsx — credential validation (no hashing — demo only)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- AUTH FLOW -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">🔐</div> Authentication Flow</div>
+    <div class="auth-flow">
+      <div class="auth-step">
+        <div class="auth-num">1</div>
+        <p>User enters <strong>Employee ID</strong> (e.g. <code>EMP001</code>) and <strong>password</strong> on the Login screen.</p>
+      </div>
+      <div class="auth-step">
+        <div class="auth-num">2</div>
+        <p><code>LoginPage.tsx</code> looks up the ID in <code>USERS</code> (from <code>types.ts</code>) and compares the password directly.</p>
+      </div>
+      <div class="auth-step">
+        <div class="auth-num">3</div>
+        <p>On success, a JSON object <code>{ id, name, modules }</code> is written to <code>sessionStorage</code> under key <code>csm-auth</code>.</p>
+      </div>
+      <div class="auth-step">
+        <div class="auth-num">4</div>
+        <p><code>App.tsx</code> reads <code>csm-auth</code> on mount — if it exists, <code>&lt;Portal&gt;</code> renders; otherwise <code>&lt;LoginPage&gt;</code>.</p>
+      </div>
+      <div class="auth-step">
+        <div class="auth-num">5</div>
+        <p><code>Portal.tsx</code> uses <code>auth.modules[]</code> to show only the module tabs the employee has access to.</p>
+      </div>
+      <div class="auth-step">
+        <div class="auth-num">6</div>
+        <p>On logout, <code>sessionStorage.removeItem('csm-auth')</code> is called and the app resets to the login screen.</p>
+      </div>
+    </div>
+    <div class="note"><strong>Note:</strong> sessionStorage is cleared automatically by the browser when the tab is closed — no explicit logout is required.</div>
+  </div>
+
+  <!-- IMAGE ASSETS -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">🖼️</div> Image Assets in /public</div>
+    <div class="img-grid">
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-1-1-login.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-1-2-dashboard.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-1-lista-func.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-2-popup-validar.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-3-popup-dados.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-4-popup-anexo.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-5-atribuicao.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-6-form-atribuicao.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-8-ferias-lista.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-9-form-ferias.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-10-assiduidade.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-12-ausencias.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-13-centro-custos.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-14-form-ausencias.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-15-horas-ext.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-16-form-horas-ext.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-17-cert-emprego.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-18-preview-emprego.jpg</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> fig-2-19-cert-salarial.jpg</div>
+      <div class="img-row"><div class="img-dot dot-png"></div> icon-ver.png</div>
+      <div class="img-row"><div class="img-dot dot-png"></div> icon-atribuir.png</div>
+      <div class="img-row"><div class="img-dot dot-png"></div> icon-ferias.png</div>
+      <div class="img-row"><div class="img-dot dot-png"></div> icon-ausencia.png</div>
+      <div class="img-row"><div class="img-dot dot-png"></div> icon-horas.png</div>
+      <div class="img-row"><div class="img-dot dot-png"></div> icon-download.png</div>
+      <div class="img-row"><div class="img-dot dot-jpg"></div> nosi-logo.jpg</div>
+    </div>
+    <div style="margin-top:10px;font-size:13px;color:var(--muted);">
+      <span style="display:inline-flex;align-items:center;gap:6px;margin-right:16px;"><span class="img-dot dot-jpg" style="display:inline-block"></span> JPG — Screenshots</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;"><span class="img-dot dot-png" style="display:inline-block"></span> PNG — Inline Icons</span>
+    </div>
+  </div>
+
+  <!-- NPM SCRIPTS -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">▶️</div> npm Scripts</div>
+    <table class="script-table">
+      <thead><tr><th>Script</th><th>Command</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>dev</code></td>
+          <td><code>vite --config vite.config.ts --host 0.0.0.0</code></td>
+          <td>Start dev server with HMR on all network interfaces (required for Replit proxy)</td>
+        </tr>
+        <tr>
+          <td><code>build</code></td>
+          <td><code>vite build --config vite.config.ts</code></td>
+          <td>Production build — outputs to <code>dist/</code></td>
+        </tr>
+        <tr>
+          <td><code>serve</code></td>
+          <td><code>vite preview --config vite.config.ts --host 0.0.0.0</code></td>
+          <td>Preview the production build locally</td>
+        </tr>
+        <tr>
+          <td><code>typecheck</code></td>
+          <td><code>tsc -p tsconfig.json --noEmit</code></td>
+          <td>Full TypeScript type-check without emitting files</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note"><strong>Important:</strong> Always run with the pnpm filter: <code>pnpm --filter @workspace/simple-manual run dev</code>. Do not run <code>pnpm dev</code> from the workspace root — it has no root dev script.</div>
+  </div>
+
+  <!-- KEY DEPENDENCIES -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">📦</div> Key Dependencies</div>
+    <div class="deps">
+      <div class="dep-card">
+        <div class="dep-header">Core Framework</div>
+        <ul class="dep-list">
+          <li>react <span class="dep-ver">^18</span></li>
+          <li>react-dom <span class="dep-ver">^18</span></li>
+          <li>vite <span class="dep-ver">catalog:</span></li>
+          <li>@vitejs/plugin-react <span class="dep-ver">catalog:</span></li>
+          <li>typescript <span class="dep-ver">5.9</span></li>
+          <li>wouter <span class="dep-ver">^3.3.5</span></li>
+        </ul>
+      </div>
+      <div class="dep-card">
+        <div class="dep-header">UI Components</div>
+        <ul class="dep-list">
+          <li>@radix-ui/* <span class="dep-ver">various</span></li>
+          <li>lucide-react <span class="dep-ver">catalog:</span></li>
+          <li>class-variance-authority <span class="dep-ver">catalog:</span></li>
+          <li>clsx + tailwind-merge <span class="dep-ver">catalog:</span></li>
+          <li>framer-motion <span class="dep-ver">catalog:</span></li>
+          <li>tailwindcss <span class="dep-ver">catalog:</span></li>
+        </ul>
+      </div>
+      <div class="dep-card">
+        <div class="dep-header">Data &amp; Forms</div>
+        <ul class="dep-list">
+          <li>@tanstack/react-query <span class="dep-ver">catalog:</span></li>
+          <li>react-hook-form <span class="dep-ver">^7.55</span></li>
+          <li>zod <span class="dep-ver">catalog:</span></li>
+          <li>@hookform/resolvers <span class="dep-ver">^3.10</span></li>
+          <li>date-fns <span class="dep-ver">^3.6</span></li>
+        </ul>
+      </div>
+      <div class="dep-card">
+        <div class="dep-header">Extras</div>
+        <ul class="dep-list">
+          <li>recharts <span class="dep-ver">^2.15</span></li>
+          <li>sonner <span class="dep-ver">^2.0</span></li>
+          <li>react-icons <span class="dep-ver">^5.4</span></li>
+          <li>embla-carousel-react <span class="dep-ver">^8.6</span></li>
+          <li>@workspace/api-client-react <span class="dep-ver">workspace:*</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSS CLASSES -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">🎨</div> Custom CSS Classes (Design System)</div>
+    <table class="ftable">
+      <thead><tr><th>Class</th><th>Used In</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>.doc-figure</code></td><td>hr-content.ts</td><td>Wrapper for real figures — adds border, shadow, rounded corners, margin</td></tr>
+        <tr><td><code>.doc-figure-img</code></td><td>hr-content.ts</td><td>Full-width responsive image inside a figure</td></tr>
+        <tr><td><code>.doc-figure-caption</code></td><td>hr-content.ts</td><td>Italic caption text below the image</td></tr>
+        <tr><td><code>.figure-placeholder</code></td><td>content files</td><td>Grey dashed box shown when no image is available yet</td></tr>
+        <tr><td><code>.inline-icon</code></td><td>hr-content.ts</td><td>20px tall inline icon aligned to text baseline</td></tr>
+        <tr><td><code>.note-box</code></td><td>content files</td><td>Amber warning/info box with left border</td></tr>
+        <tr><td><code>.step-badge</code></td><td>content files</td><td>Circular numbered badge for step-by-step instructions</td></tr>
+        <tr><td><code>.navbar-logo-img</code></td><td>Portal.tsx</td><td>NOS-i logo sizing in the top navigation bar</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SESSION STORAGE -->
+  <div class="sec">
+    <div class="sec-title"><div class="sec-icon">💾</div> sessionStorage Keys</div>
+    <table class="ftable">
+      <thead><tr><th>Key</th><th>Value Shape</th><th>Set By</th><th>Read By</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>csm-auth</code></td>
+          <td><code>&#123; id: string, name: string, modules: string[] &#125;</code></td>
+          <td>LoginPage.tsx on successful login</td>
+          <td>App.tsx on mount; Portal.tsx for module access control</td>
+        </tr>
+        <tr>
+          <td><code>csm-active-section</code></td>
+          <td><code>string</code> — section ID e.g. <code>"hr-2-1"</code></td>
+          <td>TreeNav.tsx / Portal.tsx when user clicks a section</td>
+          <td>Portal.tsx on mount to resume last-viewed section</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  SIMple Project — Project Structure README &nbsp;·&nbsp; NOS-i / CSM Technologies &nbsp;·&nbsp; Cabo Verde &nbsp;·&nbsp; 2025
+</footer>
+
+</body>
+</html>

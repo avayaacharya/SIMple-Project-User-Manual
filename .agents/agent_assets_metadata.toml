@@ -6,3 +6,9 @@ id = "6xmUZWi93yltJQomGWM59"
 uri = "file://README_SIMple.zip"
 type = "unspecified"
 title = "README.html — SIMple Project (ZIP)"
+
+[[outputs]]
+id = "1EFlMB8qVpFr8q9I6Me-d"
+uri = "file://Project_Structure_README.zip"
+type = "unspecified"
+title = "Project Structure README.html — SIMple Project (ZIP)"
