@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIMple Project — Manual do Utilizador | README</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1e3a8a;
+      --blue-mid:   #2563eb;
+      --blue-light: #dbeafe;
+      --accent:     #0ea5e9;
+      --green:      #16a34a;
+      --green-bg:   #dcfce7;
+      --amber:      #d97706;
+      --amber-bg:   #fef3c7;
+      --red:        #dc2626;
+      --red-bg:     #fee2e2;
+      --grey:       #64748b;
+      --border:     #e2e8f0;
+      --bg:         #f8fafc;
+      --white:      #ffffff;
+      --text:       #0f172a;
+      --text-muted: #64748b;
+      --radius:     8px;
+      --shadow:     0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md:  0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--blue) 0%, #1e40af 60%, #1d4ed8 100%);
+      color: #fff;
+      padding: 60px 40px 50px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      margin-bottom: 12px;
+    }
+    .hero h1 span { color: #93c5fd; }
+    .hero p {
+      font-size: 1.05rem;
+      opacity: .85;
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+    .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .tag {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    /* ── Layout ───────────────────────────────────────── */
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Section heading ──────────────────────────────── */
+    .section { margin-bottom: 48px; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--blue-light);
+    }
+    .section-title .icon {
+      width: 32px; height: 32px;
+      background: var(--blue-light);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ── Card grid ────────────────────────────────────── */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .card-value { font-size: 1rem; font-weight: 600; color: var(--text); }
+    .card-sub { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+    /* ── Credentials table ────────────────────────────── */
+    .cred-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .cred-table thead tr { background: var(--blue); color: #fff; }
+    .cred-table th { padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 600; }
+    .cred-table td { padding: 11px 16px; font-size: 14px; border-bottom: 1px solid var(--border); }
+    .cred-table tbody tr:last-child td { border-bottom: none; }
+    .cred-table tbody tr:hover { background: #f8fafc; }
+    .badge {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+    .badge-green { background: var(--green-bg); color: var(--green); }
+    .badge-blue  { background: var(--blue-light); color: var(--blue-mid); }
+    .badge-amber { background: var(--amber-bg); color: var(--amber); }
+    code {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 13px;
+      color: #be185d;
+    }
+
+    /* ── File tree ────────────────────────────────────── */
+    .file-tree {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: var(--radius);
+      padding: 24px;
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 13.5px;
+      line-height: 1.9;
+      box-shadow: var(--shadow-md);
+      overflow-x: auto;
+    }
+    .file-tree .dir   { color: #93c5fd; font-weight: 600; }
+    .file-tree .key   { color: #86efac; }
+    .file-tree .muted { color: #64748b; }
+    .file-tree .mark  { color: #fcd34d; }
+
+    /* ── Feature list ─────────────────────────────────── */
+    .feature-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .feature-list li {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue-mid);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-size: 14px;
+      box-shadow: var(--shadow);
+    }
+    .feature-list li strong { color: var(--blue); display: block; margin-bottom: 2px; }
+
+    /* ── Steps ────────────────────────────────────────── */
+    .steps { list-style: none; counter-reset: steps; }
+    .steps li {
+      counter-increment: steps;
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+    .steps li::before {
+      content: counter(steps);
+      min-width: 28px; height: 28px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .steps li p { font-size: 14.5px; }
+
+    /* ── Note box ─────────────────────────────────────── */
+    .note {
+      background: var(--amber-bg);
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+    .note strong { color: var(--amber); }
+
+    /* ── Module sections ──────────────────────────────── */
+    .module-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+    .module-block h3 { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+    .module-block ul { padding-left: 18px; }
+    .module-block ul li { font-size: 14px; margin-bottom: 4px; color: var(--text); }
+
+    /* ── Footer ───────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.6rem; }
+      .container { padding: 24px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Hero ──────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-badge">Documentação Interna</div>
+  <h1><span>SIMple</span> Project<br/>Manual do Utilizador</h1>
+  <p>Portal web interativo de documentação técnica para os módulos de Recursos Humanos e Gestão de Contratos da plataforma SIMple.</p>
+  <div class="hero-tags">
+    <span class="tag">React + Vite</span>
+    <span class="tag">TypeScript</span>
+    <span class="tag">Português</span>
+    <span class="tag">Role-Based Access</span>
+    <span class="tag">NOS-i / CSM Technologies</span>
+  </div>
+</div>
+
+<!-- ── Main content ───────────────────────────────────────── -->
+<div class="container">
+
+  <!-- Overview cards -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">📋</div>
+      Visão Geral do Projeto
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Tipo de Aplicação</div>
+        <div class="card-value">Portal de Documentação</div>
+        <div class="card-sub">Single-page React app com navegação em árvore</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Idioma</div>
+        <div class="card-value">Português (PT)</div>
+        <div class="card-sub">Todo o conteúdo e interface em português</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Autenticação</div>
+        <div class="card-value">Mock — sessionStorage</div>
+        <div class="card-sub">Sessão expira ao fechar o separador</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Módulos Disponíveis</div>
+        <div class="card-value">2 Módulos</div>
+        <div class="card-sub">Recursos Humanos · Gestão de Contratos</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Imagens / Figuras (HR)</div>
+        <div class="card-value">19 Screenshots + 6 Ícones</div>
+        <div class="card-sub">Extraídas diretamente do PDF oficial</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Contas de Demo</div>
+        <div class="card-value">4 Utilizadores</div>
+        <div class="card-sub">EMP001 · EMP002 · EMP003 · EMP004</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">✨</div>
+      Funcionalidades Principais
+    </div>
+    <ul class="feature-list">
+      <li><strong>Autenticação por Funcionário</strong>Acesso com ID de funcionário + senha; perfil de acesso definido por conta.</li>
+      <li><strong>Controlo de Acesso por Perfil</strong>Cada conta vê apenas os módulos que lhe foram atribuídos.</li>
+      <li><strong>Navegação em Árvore</strong>Painel lateral expansível com todas as secções e subsecções do manual.</li>
+      <li><strong>Pesquisa em Tempo Real</strong>Pesquisa instantânea sobre o conteúdo de todos os módulos visíveis.</li>
+      <li><strong>Figuras Reais do PDF</strong>Todas as capturas de ecrã e ícones extraídos do documento oficial.</li>
+      <li><strong>Suporte a Impressão</strong>Layout otimizado para impressão via <code>@media print</code>.</li>
+      <li><strong>Design Responsivo</strong>Funciona em desktop e tablet com o sistema de cores CSM Blue.</li>
+      <li><strong>Logo NOS-i</strong>Cabeçalho pós-login exibe o logótipo oficial da NOS-i.</li>
+    </ul>
+  </div>
+
+  <!-- Credentials -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">🔑</div>
+      Contas de Demo
+    </div>
+    <table class="cred-table">
+      <thead>
+        <tr>
+          <th>ID do Funcionário</th>
+          <th>Senha</th>
+          <th>Nome</th>
+          <th>Acesso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>EMP001</code></td>
+          <td><code>senha123</code></td>
+          <td>Ravi Shankar</td>
+          <td><span class="badge badge-green">RH + Contratos</span></td>
+        </tr>
+        <tr>
+          <td><code>EMP002</code></td>
+          <td><code>senha123</code></td>
+          <td>Priya Menon</td>
+          <td><span class="badge badge-blue">Só RH</span></td>
+        </tr>
+        <tr>
+          <td><code>EMP003</code></td>
+          <td><code>senha123</code></td>
+          <td>Arjun Das</td>
+          <td><span class="badge badge-amber">Só Contratos</span></td>
+        </tr>
+        <tr>
+          <td><code>EMP004</code></td>
+          <td><code>Pass1234</code></td>
+          <td>Roberto</td>
+          <td><span class="badge badge-green">RH + Contratos</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <strong>Nota:</strong> A autenticação é simulada — as credenciais são verificadas contra uma lista fixa no ficheiro <code>src/data/types.ts</code>. Não há base de dados ou backend envolvido.
+    </div>
+  </div>
+
+  <!-- File structure -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">📁</div>
+      Estrutura de Ficheiros
+    </div>
+    <div class="file-tree">
+<span class="dir">artifacts/simple-manual/</span>
+├── <span class="dir">public/</span>                      <span class="muted"># Imagens servidas diretamente</span>
+│   ├── <span class="key">fig-1-1-login.jpg</span>         <span class="muted"># Figura 1-1: Ecrã de login</span>
+│   ├── <span class="key">fig-1-2-dashboard.jpg</span>     <span class="muted"># Figura 1-2: Painel principal</span>
+│   ├── <span class="key">fig-2-1-lista-func.jpg</span>    <span class="muted"># Figura 2-1 … fig-2-19 (screenshots HR)</span>
+│   ├── <span class="key">icon-ver.png</span>              <span class="muted"># Ícone ação "Ver"</span>
+│   ├── <span class="key">icon-atribuir.png</span>         <span class="muted"># Ícone ação "Atribuir"</span>
+│   ├── <span class="key">icon-ferias.png</span>           <span class="muted"># Ícone ação "Férias"</span>
+│   ├── <span class="key">icon-ausencia.png</span>         <span class="muted"># Ícone ação "Ausência"</span>
+│   ├── <span class="key">icon-horas.png</span>            <span class="muted"># Ícone ação "Horas Extra"</span>
+│   ├── <span class="key">icon-download.png</span>         <span class="muted"># Ícone "Descarregar"</span>
+│   └── <span class="key">nosi-logo.jpg</span>             <span class="muted"># Logótipo NOS-i (navbar pós-login)</span>
+│
+└── <span class="dir">src/</span>
+    ├── <span class="dir">data/</span>
+    │   ├── <span class="mark">types.ts</span>              <span class="muted"># Tipos + lista USERS (credenciais)</span>
+    │   ├── <span class="mark">hr-content.ts</span>         <span class="muted"># Todo o conteúdo do módulo RH</span>
+    │   └── <span class="mark">contracts-content.ts</span>  <span class="muted"># Todo o conteúdo do módulo Contratos</span>
+    │
+    ├── <span class="dir">components/</span>
+    │   ├── <span class="mark">LoginPage.tsx</span>         <span class="muted"># Ecrã de autenticação</span>
+    │   ├── <span class="mark">Portal.tsx</span>            <span class="muted"># Shell principal (navbar + layout)</span>
+    │   ├── <span class="mark">TreeNav.tsx</span>           <span class="muted"># Navegação lateral em árvore</span>
+    │   └── <span class="mark">ContentPanel.tsx</span>      <span class="muted"># Renderizador de conteúdo + figuras</span>
+    │
+    ├── <span class="mark">index.css</span>                 <span class="muted"># Sistema de design CSM Blue completo</span>
+    └── <span class="mark">App.tsx</span>                   <span class="muted"># Raiz da aplicação</span>
+    </div>
+  </div>
+
+  <!-- Key files explained -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">🗂️</div>
+      Ficheiros Chave — O Que Fazem
+    </div>
+
+    <div class="module-block">
+      <h3>📄 src/data/types.ts — Utilizadores &amp; Tipos</h3>
+      <ul>
+        <li>Define os tipos TypeScript (<code>User</code>, <code>Module</code>, <code>Section</code>, <code>TreeNode</code>).</li>
+        <li>Contém o objeto <code>USERS</code> com todas as contas, senhas e permissões de módulos.</li>
+        <li><strong>Para adicionar um utilizador:</strong> acrescente uma entrada ao objeto <code>USERS</code>.</li>
+      </ul>
+    </div>
+
+    <div class="module-block">
+      <h3>📄 src/data/hr-content.ts — Módulo de Recursos Humanos</h3>
+      <ul>
+        <li>Exporta o objeto <code>hrModule</code> com a árvore de navegação e o conteúdo HTML de cada secção.</li>
+        <li>Cobre: Registo de Emprego, Presença (Licenças, Férias, Assiduidade, Ausências, Horas Extra), Serviço Online (Certificados).</li>
+        <li>Figuras reais: usa tags <code>&lt;figure class="doc-figure"&gt;</code>; placeholders: <code>&lt;div class="figure-placeholder"&gt;</code>.</li>
+      </ul>
+    </div>
+
+    <div class="module-block">
+      <h3>📄 src/data/contracts-content.ts — Módulo de Contratos</h3>
+      <ul>
+        <li>Exporta o objeto <code>contractsModule</code> com a estrutura completa do módulo de gestão de contratos.</li>
+        <li>Cobre: Planeamento de Aquisições, Fornecedores, Registo de Contratos, Adendas, Relatórios.</li>
+        <li>As figuras deste módulo aguardam o PDF de referência de Contratos.</li>
+      </ul>
+    </div>
+
+    <div class="module-block">
+      <h3>📄 src/components/ContentPanel.tsx — Renderizador</h3>
+      <ul>
+        <li>Renderiza o HTML de cada secção usando <code>dangerouslySetInnerHTML</code>.</li>
+        <li>A função <code>upgradeFigures()</code> transforma automaticamente qualquer <code>figure-placeholder</code> legado em blocos <code>&lt;figure&gt;</code> com imagem real, se a imagem existir em <code>/public</code>.</li>
+        <li>Inclui botão de impressão no cabeçalho de cada secção.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modules content -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">📚</div>
+      Estrutura do Conteúdo — Módulos
+    </div>
+    <div class="module-block">
+      <h3>👥 Módulo RH — Recursos Humanos</h3>
+      <ul>
+        <li><strong>1. Introdução</strong> — 1.1 Objetivo · 1.2 Acesso ao Sistema</li>
+        <li><strong>2.1 Registo de Emprego</strong> — Lista de funcionários, adicionar novo funcionário (3 separadores: Validar Registo, Dados Pessoais, Anexo)</li>
+        <li><strong>2.2.1 Atribuição de Licenças</strong> — Lista, formulário de atribuição, planeamento</li>
+        <li><strong>2.2.2 Plano de Férias</strong> — Lista de planos, formulário de marcação</li>
+        <li><strong>2.2.3 Assiduidade Diária</strong> — Registo de entradas/saídas, exportação</li>
+        <li><strong>2.2.4 Gestão de Ausências</strong> — Por Centro de Custo e por Funcionário</li>
+        <li><strong>2.2.5 Horas Extraordinárias</strong> — Lista, formulário, múltiplos funcionários</li>
+        <li><strong>2.3.1 Certificado de Declaração de Emprego</strong> — Emissão e pré-visualização</li>
+        <li><strong>2.3.2 Certificado de Declaração Salarial</strong> — Emissão e pré-visualização</li>
+      </ul>
+    </div>
+    <div class="module-block">
+      <h3>📄 Módulo Contratos — Gestão de Contratos</h3>
+      <ul>
+        <li><strong>1. Visão Geral</strong> — 1.1 Objetivo · 1.2 Como Começar</li>
+        <li><strong>2.1 Planeamento de Aquisições</strong></li>
+        <li><strong>2.2 Registo de Fornecedores</strong></li>
+        <li><strong>2.3 Registo do Contrato</strong> — Ver Contrato de Integração · Contrato de Suporte · Outros Contratos</li>
+        <li><strong>2.4 Adenda ao Contrato</strong></li>
+        <li><strong>2.5 Relatório de Contratos</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- How to run -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">▶️</div>
+      Como Executar / Desenvolver
+    </div>
+    <ol class="steps">
+      <li><p>O portal é executado automaticamente pelo workflow configurado no Replit. Não é necessário iniciar manualmente.</p></li>
+      <li><p>Para reiniciar manualmente, execute: <code>pnpm --filter @workspace/simple-manual run dev</code></p></li>
+      <li><p>Para verificar tipos TypeScript: <code>pnpm --filter @workspace/simple-manual run typecheck</code></p></li>
+      <li><p>Para adicionar conteúdo, edite <code>hr-content.ts</code> ou <code>contracts-content.ts</code> — o Vite atualiza a página automaticamente (HMR).</p></li>
+      <li><p>Para adicionar imagens, copie os ficheiros para <code>artifacts/simple-manual/public/</code> e referencie-os com <code>/nome-ficheiro.jpg</code> no conteúdo HTML.</p></li>
+    </ol>
+    <div class="note">
+      <strong>Importante:</strong> Não execute <code>pnpm run dev</code> na raiz do monorepo. Use sempre o filtro <code>--filter @workspace/simple-manual</code> ou o workflow do Replit.
+    </div>
+  </div>
+
+  <!-- Auth behaviour -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">🔐</div>
+      Comportamento da Autenticação
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Armazenamento</div>
+        <div class="card-value">sessionStorage</div>
+        <div class="card-sub">Chave: <code>csm-auth</code> (JSON com id, name, modules)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Persistência de Secção</div>
+        <div class="card-value">sessionStorage</div>
+        <div class="card-sub">Chave: <code>csm-active-section</code> — retoma a secção ao recarregar</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Expiração</div>
+        <div class="card-value">Ao fechar o separador</div>
+        <div class="card-sub">sessionStorage é limpo automaticamente pelo browser</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Validação</div>
+        <div class="card-value">Local (sem API)</div>
+        <div class="card-sub">Comparação direta com o objeto USERS em types.ts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to edit -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon">✏️</div>
+      Como Fazer Alterações Comuns
+    </div>
+    <div class="module-block">
+      <h3>Adicionar um novo utilizador</h3>
+      <ul>
+        <li>Abra <code>src/data/types.ts</code></li>
+        <li>Acrescente uma entrada ao objeto <code>USERS</code>: <code>'EMP005': &#123; password: 'senha', name: 'Nome', modules: ['hr'] &#125;</code></li>
+      </ul>
+    </div>
+    <div class="module-block">
+      <h3>Adicionar ou editar conteúdo de uma secção</h3>
+      <ul>
+        <li>Abra <code>src/data/hr-content.ts</code> ou <code>contracts-content.ts</code></li>
+        <li>Localize a secção pelo seu ID (e.g. <code>hr-2-1</code>) e edite o campo <code>content</code> (HTML em template literal)</li>
+        <li>Use <code>&lt;figure class="doc-figure"&gt;</code> para imagens e <code>&lt;div class="note-box"&gt;</code> para notas de aviso</li>
+      </ul>
+    </div>
+    <div class="module-block">
+      <h3>Adicionar uma nova secção ao módulo</h3>
+      <ul>
+        <li>Acrescente um objeto à propriedade <code>sections</code> com um ID único</li>
+        <li>Adicione o nó correspondente ao array <code>tree</code> do mesmo módulo para que apareça na navegação lateral</li>
+      </ul>
+    </div>
+    <div class="module-block">
+      <h3>Substituir uma figura placeholder por imagem real</h3>
+      <ul>
+        <li>Copie a imagem para <code>artifacts/simple-manual/public/</code></li>
+        <li>Substitua o <code>&lt;div class="figure-placeholder"&gt;...&lt;/div&gt;</code> por um bloco <code>&lt;figure class="doc-figure"&gt;&lt;img src="/ficheiro.jpg" .../&gt;&lt;figcaption&gt;...&lt;/figcaption&gt;&lt;/figure&gt;</code></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  SIMple Project — Manual do Utilizador &nbsp;·&nbsp; NOS-i / CSM Technologies &nbsp;·&nbsp; Cabo Verde &nbsp;·&nbsp; 2025
+</div>
+
+</body>
+</html>
